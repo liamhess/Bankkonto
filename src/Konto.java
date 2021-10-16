@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Konto {
     int nummer;
     String inhaber;
     private int kontostand;
+    ArrayList<Konto> bevollmaechtigte = new ArrayList<Konto>();
 
     public Konto(int nummer, String inhaber) {
         this.nummer = nummer;
@@ -33,10 +36,25 @@ public class Konto {
         System.out.println("\n" + betrag + "€ von " + this.inhaber + " an " + empfaenger.inhaber + " überwiesen.\n");
     }
 
+    public void bevollmaechtigen (Konto bevollmaechtigter) {
+        bevollmaechtigte.add(bevollmaechtigter);
+    }
+
+    public void entmaechtigen (Konto bevollmaechtigter) {
+        if (bevollmaechtigte.contains(bevollmaechtigter)) {
+            bevollmaechtigte.remove(bevollmaechtigter);
+        }
+    }
+
     public void einziehen(int betrag, Konto belastender) {
-        belastender.abheben(betrag);
-        this.einzahlen(betrag);
-        System.out.println("\n" + this.inhaber + " hat " + betrag + "€ von " + belastender.inhaber + " eingezogen.\n");
+        if (belastender.bevollmaechtigte.contains(this)) {
+            belastender.abheben(betrag);
+            this.einzahlen(betrag);
+            System.out.println("\n" + this.inhaber + " hat " + betrag + "€ von " + belastender.inhaber + " eingezogen.\n");
+        } else {
+            System.out.println("Hier liegt kein Einverständnis vor!");
+        }
+        
     }
 
     public void outputData() {

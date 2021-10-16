@@ -6,6 +6,8 @@ public class App {
         Konto yangyiKonto = new Konto(69420, "Yang Yi", 1000);
         yangyiKonto.outputData();
 
+        yangyiKonto.bevollmaechtigen(felixKonto);
+        yangyiKonto.entmaechtigen(felixKonto);
         felixKonto.einziehen(500, yangyiKonto);
         felixKonto.outputData();
         yangyiKonto.outputData();
