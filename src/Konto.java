@@ -9,9 +9,9 @@ public class Konto {
         kontostand = 0;
     }
 
-    public Konto(int nummerH, String inhaberH, int begruessungsGeld) {
-        nummer = nummerH;
-        inhaber = inhaberH;
+    public Konto(int nummer, String inhaber, int begruessungsGeld) {
+        this.nummer = nummer;
+        this.inhaber = inhaber;
         kontostand = begruessungsGeld;
     }
 
