@@ -39,4 +39,10 @@ public class Konto {
         System.out.println("\n" + this.inhaber + " hat " + betrag + "€ von " + belastender.inhaber + " eingezogen.\n");
     }
 
+    public void outputData() {
+        System.out.println("\nInhaber: " + inhaber);
+        System.out.println("Kontonummer: " + nummer);
+        System.out.println("Kontostand: " + kontostand + "€\n");
+    }
+
 }
